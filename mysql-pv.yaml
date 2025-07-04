@@ -4,11 +4,16 @@ metadata:
   name: mysql-pv
 spec:
   capacity:
-     storage: 2Gi
+    storage: 2Gi
   volumeMode: Filesystem
-  storageClassName: standard
+  storageClassName: ""
+  #  storageClassName: standard
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /var/lib/mysql
-    type: DirectoryOrCreate
+    - ReadWriteMany
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-09b7e2776f550bc52
+#    - ReadWriteOnce
+#  hostPath:
+#    path: /var/lib/mysql
+#    type: DirectoryOrCreate
